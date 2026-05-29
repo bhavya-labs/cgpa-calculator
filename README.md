@@ -25,7 +25,7 @@ A modern and responsive CGPA Calculator built using HTML, CSS, and JavaScript.
 
 ## 🌐 Live Demo
 
-(Add GitHub Pages link here later)
+https://bhavya-labs.github.io/cgpa-calculator/
 
 ## 👨‍💻 Author
 

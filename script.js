@@ -52,10 +52,12 @@ function calculateCGPA() {
 }
 function calculateRequiredSGPA() {
 
-  const target = parseFloat(document.getElementById("targetCGPA").value);
+  const targetInput = document.getElementById("targetCGPA").value;
+  const target = parseFloat(targetInput);
 
   if (isNaN(target) || target < 0 || target > 10) {
-    alert("Enter valid target CGPA between 0 and 10");
+    document.getElementById("requiredResult").innerText =
+      "Enter valid target CGPA (0 - 10)";
     return;
   }
 
@@ -71,7 +73,8 @@ function calculateRequiredSGPA() {
     if (isNaN(value)) continue;
 
     if (value < 0 || value > 10) {
-      alert("Please enter SGPA between 0 and 10");
+      document.getElementById("requiredResult").innerText =
+        "SGPA must be between 0 and 10";
       return;
     }
 
@@ -79,12 +82,13 @@ function calculateRequiredSGPA() {
     completed++;
   }
 
-  const totalSem = 8;
+  const totalSem = parseInt(document.getElementById("semesterCount").value || 8);
+
   const remaining = totalSem - completed;
 
   if (remaining <= 0) {
     document.getElementById("requiredResult").innerText =
-      "All semesters already completed!";
+      "All selected semesters already have SGPA!";
     return;
   }
 
@@ -92,13 +96,13 @@ function calculateRequiredSGPA() {
 
   if (requiredSGPA > 10) {
     document.getElementById("requiredResult").innerText =
-      `Not possible. You need ${requiredSGPA.toFixed(2)} SGPA (above 10).`;
+      `Not possible 😓 You need ${requiredSGPA.toFixed(2)} SGPA (>10)`;
     return;
   }
 
   if (requiredSGPA < 0) {
     document.getElementById("requiredResult").innerText =
-      `Target already achieved! 🎉`;
+      "Target already achieved 🎉";
     return;
   }
 

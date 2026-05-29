@@ -50,3 +50,42 @@ function calculateCGPA() {
   document.getElementById("result").innerText =
     `CGPA: ${cgpa.toFixed(2)}`;
 }
+function calculateRequiredSGPA() {
+
+  const target = parseFloat(document.getElementById("targetCGPA").value);
+
+  const sgpas = document.querySelectorAll(".sgpa");
+
+  let total = 0;
+  let completed = 0;
+
+  sgpas.forEach(input => {
+    let value = parseFloat(input.value);
+
+    if (!isNaN(value)) {
+      total += value;
+      completed++;
+    }
+  });
+
+  const totalSem = 8;
+
+  if (completed === 0) {
+    document.getElementById("requiredResult").innerText =
+      "Enter at least one SGPA first.";
+    return;
+  }
+
+  const remaining = totalSem - completed;
+
+  if (remaining <= 0) {
+    document.getElementById("requiredResult").innerText =
+      "All semesters completed!";
+    return;
+  }
+
+  const requiredSGPA = ((target * totalSem) - total) / remaining;
+
+  document.getElementById("requiredResult").innerText =
+    `You need average SGPA of ${requiredSGPA.toFixed(2)} in remaining semesters.`;
+}

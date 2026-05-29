@@ -52,8 +52,7 @@ function calculateCGPA() {
 }
 function calculateRequiredSGPA() {
 
-  const targetInput = document.getElementById("targetCGPA").value;
-  const target = parseFloat(targetInput);
+  const target = parseFloat(document.getElementById("targetCGPA").value);
 
   if (isNaN(target) || target < 0 || target > 10) {
     document.getElementById("requiredResult").innerText =
@@ -82,13 +81,19 @@ function calculateRequiredSGPA() {
     completed++;
   }
 
-  const totalSem = parseInt(document.getElementById("semesterCount").value || 8);
+  const totalSem = parseInt(document.getElementById("semesterCount").value);
+
+  if (!totalSem || totalSem <= 0) {
+    document.getElementById("requiredResult").innerText =
+      "Please select number of semesters first";
+    return;
+  }
 
   const remaining = totalSem - completed;
 
   if (remaining <= 0) {
     document.getElementById("requiredResult").innerText =
-      "All selected semesters already have SGPA!";
+      "No remaining semesters left!";
     return;
   }
 

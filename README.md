@@ -23,10 +23,6 @@ A modern and responsive CGPA Calculator built using HTML, CSS, and JavaScript.
 3. Click on "Calculate CGPA"
 4. View the final CGPA instantly
 
-## 📷 Project Preview
-
-(Add screenshot here later)
-
 ## 🌐 Live Demo
 
 (Add GitHub Pages link here later)

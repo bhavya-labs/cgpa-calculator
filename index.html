@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CGPA Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>CGPA Calculator</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
     <h1>🎓 CGPA Calculator</h1>
+
     <p class="subtitle">
-  Calculate your CGPA instantly for up to 8 semesters
-</p>
+        Calculate CGPA for any degree using semester credits
+    </p>
+
     <div class="box">
 
-      <label>Select Number of Semesters</label>
+        <label>Total Number of Semesters</label>
 
-      <select id="semesterCount" onchange="generateInputs()">
-        <option value="">Choose</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </select>
+        <input
+            type="number"
+            id="semesterCount"
+            min="1"
+            max="20"
+            placeholder="Enter total semesters"
+        >
 
-      <div id="sgpaInputs"></div>
+        <button onclick="generateInputs()">
+            Generate Semesters
+        </button>
 
-      <button onclick="calculateCGPA()">
-        Calculate CGPA
-      </button>
+        <div id="semesterInputs"></div>
 
-      <h2 id="result">
-        CGPA: 0.00
-      </h2>
-      <hr>
+        <button onclick="calculateCGPA()">
+            Calculate CGPA
+        </button>
 
-<h3>🎯 Target CGPA Planner</h3>
+        <h2 id="result">
+            CGPA: 0.00
+        </h2>
 
-<input type="number" id="targetCGPA" placeholder="Enter Target CGPA (e.g. 8.5)">
+        <hr>
 
-<button onclick="calculateRequiredSGPA()">
-  Calculate Required SGPA
-</button>
+        <h3>🎯 Target CGPA Planner</h3>
 
-<p id="requiredResult"></p>
+        <input
+            type="number"
+            step="0.01"
+            id="targetCGPA"
+            placeholder="Enter Target CGPA"
+        >
+
+        <button onclick="calculateRequiredCGPA()">
+            Calculate Required Performance
+        </button>
+
+        <p id="requiredResult"></p>
+
     </div>
 
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
